@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     private int desiredLane = 1; // 0 = Left, 1 = Middle, 2 = Right
     public float laneDistance = 4f; // The distance between two lanes
 
+    public float jumpForce;
+    public float gravity = -20;
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -22,7 +24,17 @@ public class PlayerController : MonoBehaviour
     {
         direction.z = forwardSpeed;
 
-        if(Input.GetKeyDown(KeyCode.RightArrow))
+        direction.y += gravity * Time.deltaTime;
+
+        if(controller.isGrounded)
+        {
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                Jump();
+            }
+        }
+
+        if(Input.GetKeyDown(KeyCode.D))
         {
             desiredLane++;
             if(desiredLane == 3)
@@ -31,7 +43,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.LeftArrow))
+        if(Input.GetKeyDown(KeyCode.A))
         {
             desiredLane--;
             if(desiredLane == -1)
@@ -57,5 +69,10 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         controller.Move(direction * Time.deltaTime);
+    }
+
+    private void Jump()
+    {
+        direction.y = jumpForce;
     }
 }
