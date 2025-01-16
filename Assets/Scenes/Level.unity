@@ -158,7 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forwardSpeed: 5
   laneDistance: 2
-  jumpForce: 23
+  jumpForce: 12
   gravity: -20
 --- !u!136 &261195054
 CapsuleCollider:
