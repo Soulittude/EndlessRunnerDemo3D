@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
 
     public float jumpForce;
     public float gravity = -20;
+
+    public Animator animator;
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -22,10 +24,15 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+
+        if(!PlayerManager.isGameStarted)
+            return;
+
+        animator.SetBool("isGameStarted", true);
         direction.z = forwardSpeed;
-
-        direction.y += gravity * Time.deltaTime;
-
+        direction.y += gravity * Time.deltaTime; //comment olabilir
+        
+        animator.SetBool("isGrounded", controller.isGrounded);
         if(controller.isGrounded)
         {
             if(SwipeManager.swipeUp)
