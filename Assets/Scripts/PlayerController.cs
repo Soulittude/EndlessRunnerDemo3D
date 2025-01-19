@@ -82,6 +82,8 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(!PlayerManager.isGameStarted)
+            return;
         controller.Move(direction * Time.fixedDeltaTime);
     }
 
