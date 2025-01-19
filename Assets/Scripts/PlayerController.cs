@@ -28,13 +28,13 @@ public class PlayerController : MonoBehaviour
 
         if(controller.isGrounded)
         {
-            if(Input.GetKeyDown(KeyCode.Space))
+            if(SwipeManager.swipeUp)
             {
                 Jump();
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.D))
+        if(SwipeManager.swipeRight)
         {
             desiredLane++;
             if(desiredLane == 3)
@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.A))
+        if(SwipeManager.swipeLeft)
         {
             desiredLane--;
             if(desiredLane == -1)
