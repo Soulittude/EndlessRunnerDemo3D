@@ -64,6 +64,11 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(Slide());
         }
 
+        if(SwipeManager.swipeDown && !isSmoothlyGrounded)
+        {
+            direction.y = -jumpForce;;
+        }
+
         // Handle lane changes
         HandleLaneChanges();
 

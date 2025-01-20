@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
@@ -9,11 +10,15 @@ public class PlayerManager : MonoBehaviour
 
     public static bool isGameStarted;
     public GameObject tapToStartText ;
+
+    public static int numberOfCoins;
+    public TextMeshProUGUI coinsText;
     void Start()
     {
         Time.timeScale = 1;
         gameOver = false;
         isGameStarted = false;
+        numberOfCoins = 0;
     }
 
     // Update is called once per frame
@@ -24,6 +29,8 @@ public class PlayerManager : MonoBehaviour
             Time.timeScale = 0;
             gameOverPanel.SetActive(true);
         }
+
+        coinsText.text = "Coins: " + numberOfCoins;
 
         if(SwipeManager.tap)
         {
