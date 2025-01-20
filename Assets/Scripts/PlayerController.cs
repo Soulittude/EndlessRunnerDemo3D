@@ -121,6 +121,7 @@ public class PlayerController : MonoBehaviour
     {
         if (SwipeManager.swipeRight)
         {
+            FindObjectOfType<AudioManager>().PlaySound("Swap");
             desiredLane++;
             if (desiredLane == 3)
                 desiredLane = 2;
@@ -128,6 +129,7 @@ public class PlayerController : MonoBehaviour
 
         if (SwipeManager.swipeLeft)
         {
+            FindObjectOfType<AudioManager>().PlaySound("Swap");
             desiredLane--;
             if (desiredLane == -1)
                 desiredLane = 0;
@@ -154,6 +156,8 @@ public class PlayerController : MonoBehaviour
         if (hit.transform.tag == "Obstacle")
         {
             PlayerManager.gameOver = true;
+            FindObjectOfType<AudioManager>().StopSound("MainTheme");
+            FindObjectOfType<AudioManager>().PlaySound("GameOver");
         }
     }
 }
