@@ -10,8 +10,8 @@ public class Events : MonoBehaviour
         SceneManager.LoadScene("Game");
     }
 
-    public void QuitGame()
+    public void MainMenu()
     {
-        Application.Quit();
+        SceneManager.LoadScene("MainMenu");
     }
 }

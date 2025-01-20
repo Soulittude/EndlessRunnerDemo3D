@@ -99,11 +99,13 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
+        FindObjectOfType<AudioManager>().PlaySound("Swap");
         direction.y = jumpForce; // Apply jump force
     }
 
     private IEnumerator Slide()
     {
+        FindObjectOfType<AudioManager>().PlaySound("Swap");
         isSliding = true;
         animator.SetBool("isSliding", true);
         controller.center = new Vector3(0, -0.5f, 0);
